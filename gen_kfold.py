@@ -22,7 +22,7 @@ positives = [p.split('/')[-1].replace('.tif', '') for p in positives]
 negatives = [p.split('/')[-1].replace('.tif', '') for p in negatives]
 
 tmas = {0:negatives, 1:positives}
-phases=['train', 'test']
+phases=['train', 'val']
 
 for I in range(0, Repeat):
     #print('round', I)
@@ -32,7 +32,7 @@ for I in range(0, Repeat):
     for i in range(3):
         oneround[i]={}
         oneround[i]['train']=[]
-        oneround[i]['test']=[]
+        oneround[i]['val']=[]
     for i in [0,1]:
         Folds[i]=kf.split(tmas[i])
     for g in [0,1]:
