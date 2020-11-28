@@ -76,6 +76,7 @@ def static_val_classification_slide_wise(patch_loaders, net, device, criterion, 
                 slide_loss += loss.item()*size
                 outputs = torch.sigmoid(outputs)
                 scores, preds = torch.max(outputs, 1)
+                scores = torch.abs(scores-(1-preds))
                 slide_preds = np.append(slide_preds,np.array(preds.cpu().numpy()))
                 slide_scores = np.append(slide_scores,np.array(scores.cpu().numpy()))
         slide={}
