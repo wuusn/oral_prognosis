@@ -1,5 +1,6 @@
 import argparse
 import os
+import time
 
 def get_args():
     parser = argparse.ArgumentParser(description='Train TMA based classification', \
@@ -15,8 +16,9 @@ def get_args():
     parser.add_argument('--base-dir', type=str, default='/mnt/md0/_datasets/OralCavity/TMA_arranged/WU/data4disease/patch20x224s1.0e0.8')
     parser.add_argument('--save-dir', type=str, default='/mnt/md0/_datasets/OralCavity/TMA_arranged/WU/data4disease/save')
     parser.add_argument('--codename', type=str, default='atest')
+    parser.add_argument('--date', type=str, default=time.strftime('%m%d-%H:%M'))
     args = parser.parse_args()
-    tmp_dir = f'{args.save_dir}/{args.codename}'
+    tmp_dir = f'{args.save_dir}/{args.codename+args.date}'
     os.makedirs(tmp_dir,exist_ok=True)
     with open(f'{tmp_dir}/args.txt', 'w') as f:
         for k,v in args.__dict__.items():

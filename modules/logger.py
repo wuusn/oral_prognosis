@@ -63,7 +63,6 @@ class Logger():
         self.epoch +=1
 
     def save_min_model(self):
-        print(f"min-result: loss: {result['loss']}, patch-acc: {result['patch-accuracy']}, slide-auc: {result['slide-auc']}")
         torch.save(self.result['net'].to(torch.device('cpu')), f'{self.checkpoint_dir}/min_{self.min_val_count}.pth')
 
     def save_plot(self):

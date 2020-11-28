@@ -86,7 +86,7 @@ if __name__ =='__main__':
     #optimizer = optim.Adam(net.parameters())
     optimizer = optim.SGD(net.parameters(), lr=.0005, momentum=.9, weight_decay=1e-4)
     criterion = nn.CrossEntropyLoss()
-    date = time.strftime('%m%d-%H:%M')
+    date = args.date
     codename = args.codename
     logger = Logger(codename+date, args.save_dir)
     stopPolicy = getattr(strategy, f'get_{args.stopby}')(len(trainLoader.dataset),args.epochs)
